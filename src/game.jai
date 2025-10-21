@@ -29,9 +29,10 @@ update :: (dt: float) {
 key_press :: (key: u32) {
     if key == {
         case #char "Q"; #if DEBUG if state == .PLAY for *targets target_hit(it);
-        case #char "L"; rtl = !rtl;
+        case #char "W"; rtl = !rtl;
         case #char "P"; lang = cast(I18N_Lang) ((lang + 1) % I18N_LANG_COUNT);
         case 130; #through;
+        case #char "H"; #through;
         case #char "A"; {
             left = true;
             if state == .START {
@@ -40,6 +41,7 @@ key_press :: (key: u32) {
             }
         }
         case 131; #through;
+        case #char "L"; #through;
         case #char "D"; {
             right = true;
             if state == .START {
@@ -59,8 +61,8 @@ key_press :: (key: u32) {
 
 key_release :: (key: u32) {
     if key == {
-        case 130; #through; case #char "A"; left = false;
-        case 131; #through; case #char "D"; right = false;
+        case 130; #through; case #char "A"; #through; case #char "H"; left = false;
+        case 131; #through; case #char "D"; #through; case #char "L"; right = false;
     }
 }
 
