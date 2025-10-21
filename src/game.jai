@@ -41,6 +41,7 @@ key_press :: (key: u32) {
             }
         }
         case 131; #through;
+        case #char "F"; #through;
         case #char "L"; #through;
         case #char "D"; {
             right = true;
@@ -62,7 +63,7 @@ key_press :: (key: u32) {
 key_release :: (key: u32) {
     if key == {
         case 130; #through; case #char "A"; #through; case #char "H"; left = false;
-        case 131; #through; case #char "D"; #through; case #char "L"; right = false;
+        case 131; #through; case #char "D"; #through; case #char "L"; #through; case #char "F"; right = false;
     }
 }
 
